@@ -1,8 +1,7 @@
 from PIL import Image
 from numpy import average, array, exp, sqrt
 
-# modify these params
-OUTER_SIZE = 3600
+# modify these params#
 INNER_SIZE = 360
 INNER_X_LEFT = 2665
 INNER_Y_TOP = 1290
@@ -10,11 +9,12 @@ STEPS = 50
 GIF_RES = 1000
 DURATION = 20
 MODE = "linear" # or quad or sqrt
+IMAGE = "zoom.png"
 
 # init helper data structures
-cropstart = array([0, 0, OUTER_SIZE, OUTER_SIZE])
+image = Image.open(IMAGE)
 cropend = array([INNER_X_LEFT, INNER_Y_TOP, INNER_X_LEFT+INNER_SIZE, INNER_Y_TOP+INNER_SIZE])
-image = Image.open("zoom.png")
+cropstart = array([0, 0, image.size[0], image.size[1]])
 frames = []
 
 for i in range(STEPS+1):
